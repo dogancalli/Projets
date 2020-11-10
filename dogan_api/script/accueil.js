@@ -4,7 +4,7 @@ $(document).ready(function() {
         window.location = 'Annonces.php';
     });
     $.ajax({
-        url: 'http://localhost/DogMann/dogan_api/api/Advert/read.php',
+        url: 'api/Advert/read.php',
 
         type: 'GET',
 

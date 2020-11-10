@@ -45,6 +45,7 @@
         </div>
     </section>
     <br>
+    <div class="lastadd1"><center><h3>Dernière publication</h3></center></div>
     <div class="lastadd"></div>
 </main>
 <footer>
