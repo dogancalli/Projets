@@ -8,7 +8,7 @@ $(document).ready(function() {
 
     console.log(param);
     $.ajax({
-        url: 'http://localhost/DogMann/dogan_api/api/Advert/read_single.php',
+        url: 'api/Advert/read_single.php',
 
         type: 'GET',
 
@@ -35,16 +35,16 @@ $(document).ready(function() {
                 +'<hr class="my-4">'
                 +'<form class="formulaire" id="form1">'
                 +'<div class="form-group">'
-                +'<label class="col-form-label" for="Name" datatype="application/json">Name</label>'
-                +'<input type="text" class="form-control" placeholder="Enter your name" id="Name" name="NAMECA">'
-                +'<label class="col-form-label" for="LastName" datatype="application/json">Lastname</label>'
-                +'<input type="text" class="form-control" placeholder="Enter your Lastname" id="LastName" name="LAST">'
+                +'<label class="col-form-label" for="Name" datatype="application/json">Prénom</label>'
+                +'<input type="text" class="form-control" placeholder="Entrez votre Prénom" id="Name" name="NAMECA">'
+                +'<label class="col-form-label" for="LastName" datatype="application/json">Nom</label>'
+                +'<input type="text" class="form-control" placeholder="Entrez votre Nom" id="LastName" name="LAST">'
                 +'<label class="col-form-label" for="MAIL" datatype="application/json">Email</label>'
-                +'<input type="text" class="form-control" placeholder="Enter your Email" id="MAIL" name="MAIL">'
-                +'<label class="col-form-label" for="Phone" datatype="application/json">Phone number</label>'
-                +'<input type="text" class="form-control" placeholder="Enter your phone number" id="Phone" name="Phone">'
-                +'<label class="col-form-label" for="MOTIV" datatype="application/json">Your motivations</label>'
-                +'<input type="text-area" class="form-control" placeholder="Enter your motivations" id="MOTIV" name="MOTIV">'
+                +'<input type="text" class="form-control" placeholder="Entrez votre Email" id="MAIL" name="MAIL">'
+                +'<label class="col-form-label" for="Phone" datatype="application/json">Portable</label>'
+                +'<input type="text" class="form-control" placeholder="Entrez votre numéro de portable" id="Phone" name="Phone">'
+                +'<label class="col-form-label" for="MOTIV" datatype="application/json">Vos motivations</label>'
+                +'<input type="text-area" class="form-control" placeholder="Entrez vos motivations" id="MOTIV" name="MOTIV">'
                 +'<p class="lead"><button type="submit" class="btn btn-primary btn-lg savoir" >Postuler</button></p>'
                 +'</form>'
                 +'</div>'
@@ -70,7 +70,7 @@ $(document).ready(function() {
                 var DatJson = JSON.stringify(DAT);
 
                 $.ajax({
-                    url: 'http://localhost/DogMann/dogan_api/api/Candidatures/create.php',
+                    url: 'api/Candidatures/create.php',
                     type: 'POST',
                     data: DatJson,
                     success: function (Dat) {

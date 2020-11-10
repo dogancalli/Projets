@@ -1,10 +1,10 @@
 $(document).ready(function() {
     $("ul li:nth-child(1)").addClass("active");
     $('.postuler').click(function () {
-        window.location = 'http://localhost/DogMann/dogan_api/Annonces.php';
+        window.location = 'Annonces.php';
     });
     $.ajax({
-        url: 'http://localhost/DogMann/dogan_api/api/Advert/read.php',
+        url: 'api/Advert/read.php',
 
         type: 'GET',
 
@@ -15,7 +15,7 @@ $(document).ready(function() {
 
 
             var data = response.data;
-            var i = response.data[data.length -1];
+            var i = response.data[0];
 
             var ID = i.IdAd;
             var NAME = i.NameAd;
