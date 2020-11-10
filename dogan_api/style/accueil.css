@@ -1,0 +1,33 @@
+.bg1{
+    width: 100%;
+}
+
+.wJob {
+
+    margin-top: 300px;
+    margin-bottom: 400px;
+    animation-name: welcome;
+    animation-duration: 2s;
+}
+
+@keyframes welcome {
+    0%   {opacity: 0%;}
+    25%  {opacity: 25%;}
+    50%  {opacity: 50%;}
+    75%  {opacity: 75%}
+    100% {opacity: 100%;}
+}
+.clique{
+    display: inline-flex;
+}
+.text-bg{
+    margin-top: 50%;
+    float: left;
+    width: 250%;
+}
+
+.CV{
+    float: right;
+    width: 65%;
+    margin-right: 0px;
+}
