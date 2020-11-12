@@ -43,6 +43,8 @@ $(document).ready(function() {
                 +'<input type="text" class="form-control" placeholder="Entrez votre Email" id="MAIL" name="MAIL">'
                 +'<label class="col-form-label" for="Phone" datatype="application/json">Portable</label>'
                 +'<input type="text" class="form-control" placeholder="Entrez votre numéro de portable" id="Phone" name="Phone">'
+                +'<label for="cv_file">Choisir CV</label>'
+                +'<input type="file" class="form-control-file" id="cv_file" aria-describedby="fileHelp">'
                 +'<label class="col-form-label" for="MOTIV" datatype="application/json">Vos motivations</label>'
                 +'<input type="text-area" class="form-control" placeholder="Entrez vos motivations" id="MOTIV" name="MOTIV">'
                 +'<p class="lead"><button type="submit" class="btn btn-primary btn-lg savoir" >Postuler</button></p>'
@@ -55,6 +57,13 @@ $(document).ready(function() {
 
             $('#form1').submit(function(){
 
+                var file = $('#cv_file')[0].files[0]
+                if (file){
+                    console.log(file.name);
+                }
+                var formData = new FormData();
+                formData.append('file', file);
+
                 var NAMECA = $(this).find("input[name=NAMECA]").val();
                 var LAST = $(this).find("input[name=LAST]").val();
                 var MAIL = $(this).find("input[name=MAIL]").val();
@@ -66,6 +75,7 @@ $(document).ready(function() {
                              EmailCa : MAIL,
                              PhoneCa : PHONE,
                              MotivationsCa : MOTIV,
+                             CvCa : "dogan_api/CV/"+file.name,
                              AddId : addnum};
                 var DatJson = JSON.stringify(DAT);
 
@@ -75,8 +85,20 @@ $(document).ready(function() {
                     data: DatJson,
                     success: function (Dat) {
 
-                        console.log(Dat);
+                        $.ajax({
+                            url: 'http://localhost/DogMann/dogan_api/api/Candidatures/upload_file.php',
+                            type: 'POST',
+                            data: formData,
+                            processData: false,
+                            contentType: false,
+                            enctype: 'multipart/form-data',
 
+                            success:function (cv) {
+
+                                console.log(cv);
+
+                            }
+                        });
 
                     },
                     error: function (NoDat) {
@@ -84,8 +106,7 @@ $(document).ready(function() {
                     }
                 })
 
-                alert("Vous avez postulé avec succès au poste de "+NAME+"\n Cliquez sur ok pour retourner à la page des annonces");
-                location.href="Annonces.php";
+
                     return false;
                 });
 
@@ -101,3 +122,7 @@ $(document).ready(function() {
 
 
 });
+
+
+
+

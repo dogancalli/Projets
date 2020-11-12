@@ -37,13 +37,14 @@
                 <br>Comment faire ? C'est simple ! Accédez aux offres les plus récentes mises en ligne par de nombreux employeurs
                 <br>faisaent confiance à JobBoard. Pour cela il vous suffit de cliquez :
             </p>
-            <button class="btn btn-primary btn-lg postuler" role="button">Postuler</button>
             </center>
         </div>
         <div>
             <img class="CV" src="style/medias/saisie.jpg">
         </div>
     </section>
+    <center>
+        <button class="btn btn-primary btn-lg postuler" role="button">Découvrir nos offres !</button></center>
     <br>
     <div class="lastadd1"><center><h3>Dernière publication</h3></center></div>
     <div class="lastadd"></div>
