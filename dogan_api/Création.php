@@ -16,49 +16,43 @@
     ?>
 </header>
 <main>
-    <form>
+    <form id="publier">
         <fieldset>
-            <legend>Legend</legend>
-            <div class="form-group row">
-                <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
-                <div class="col-sm-10">
-                    <input type="text" readonly="" class="form-control-plaintext" id="staticEmail" value="email@example.com">
+            <legend>Publier une offre d'emploi</legend>
+                <div class="form-group">
+            <label class="col-form-label" for="adname" datatype="application/json">Nom du poste</label>
+            <input type="text" class="form-control" placeholder="Entrez l'intitulé de l'offre" id="adname" name="adname">
                 </div>
-            </div>
+                <div class="form-group">
+            <label class="col-form-label" for="company" datatype="application/json">Nom de l'entreprise</label>
+            <input type="text" class="form-control" placeholder="Entrez le nom de l'entreprise" id="company" name="company">
+                </div>
+                <div class="form-group">
+            <label class="col-form-label" for="location" datatype="application/json">Localisation de l'offre</label>
+            <input type="text" class="form-control" placeholder="Entrez la localisation" id="location" name="location">
+                </div>
             <div class="form-group">
-                <label for="exampleInputEmail1">Email address</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-            </div>
-            <div class="form-group">
-                <label for="exampleInputPassword1">Password</label>
-                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-            </div>
-            <div class="form-group">
-                <label for="exampleSelect1">Example select</label>
-                <select class="form-control" id="exampleSelect1">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
+                <label for="adcontrat">Type de contrat</label>
+                <select class="form-control" id="adcontrat" name="adcontrat">
+                    <option>CDI</option>
+                    <option>CDD</option>
+                    <option>Intérim</option>
+                    <option>Temps plein</option>
+                    <option>Temps partiel</option>
+                    <option>Alternance</option>
+                    <option>Stage</option>
+                    <option>Contrat pro</option>
+                    <option>Freelance/Indépendant</option>
                 </select>
-            </div>
-            <div class="form-group">
-                <label for="exampleSelect2">Example multiple select</label>
-                <select multiple="" class="form-control" id="exampleSelect2">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="exampleTextarea">Example textarea</label>
-                <textarea class="form-control" id="exampleTextarea" rows="3"></textarea>
             </div>
 
+            <div class="form-group">
+                <label for="adcontent">Description du poste</label>
+                <textarea class="form-control" id="adcontent" name="adcontent" rows="3"></textarea>
+            </div>
+            <div>
+                <button type="submit" class="btn btn-primary btn-lg btn-block publier">Publier</button>
+            </div>
     </form>
 </main>
 <footer>

@@ -47,7 +47,7 @@ $(document).ready(function() {
                 +'<input type="file" class="form-control-file" id="cv_file" aria-describedby="fileHelp">'
                 +'<label class="col-form-label" for="MOTIV" datatype="application/json">Vos motivations</label>'
                 +'<input type="text-area" class="form-control" placeholder="Entrez vos motivations" id="MOTIV" name="MOTIV">'
-                +'<p class="lead"><button type="submit" class="btn btn-primary btn-lg savoir" >Postuler</button></p>'
+                +'<p class="lead"><button type="submit" class="btn btn-primary btn-lg btn-block savoir" >Postuler</button></p>'
                 +'</form>'
                 +'</div>'
                 +'</div>');
@@ -86,7 +86,7 @@ $(document).ready(function() {
                     success: function (Dat) {
 
                         $.ajax({
-                            url: 'http://localhost/DogMann/dogan_api/api/Candidatures/upload_file.php',
+                            url: 'api/Candidatures/upload_file.php',
                             type: 'POST',
                             data: formData,
                             processData: false,
@@ -106,7 +106,8 @@ $(document).ready(function() {
                     }
                 })
 
-
+                alert("Vous avez postulé avec succès au poste de "+NAME+"\n Cliquez sur ok pour retourner à la page des annonces");
+                location.href="Annonces.php";
                     return false;
                 });
 
