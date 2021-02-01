@@ -1,0 +1,17 @@
+.infoBar{
+    border-radius: 8px;
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+    display: flex;
+    position: static;
+    margin-top: 0px;
+    color: #F3F3F3;
+    background-color: #5b17a9
+}
+
+.channelTitle{
+    font-size: 20px;
+    text-align: left;
+    margin-left: 6px;
+    font-family: Helvetica;
+}

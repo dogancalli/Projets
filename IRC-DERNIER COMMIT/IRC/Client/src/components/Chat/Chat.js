@@ -5,12 +5,16 @@ import io from 'socket.io-client';
 import InfoBar from '../InfoBar/InfoBar';
 import Input from '../Input/Input';
 import Messages from '../Messages/Messages';
+import ChatList from "../ChatList/ChatList";
 import OnlineUsers from '../OnlineUsers/OnlineUsers';
+import profilIconBlanc from './profilIconBlanc.png';
+
 
 let socket;
 
 const Chat = ({location}) => {
 
+    const [oldNicknames, setOldNicknames] = useState([]);
     const [nickname, setNickname] = useState('');
     const [channel, setChannel] = useState('');
     const [users, setUsers] = useState('');
@@ -27,18 +31,19 @@ const Chat = ({location}) => {
         socket = io(ENDPOINT);
 
         setNickname(nickname);
+/*        setOldNicknames(nickname);*/
         setChannel(channel);
 
-       socket.emit("join", { nickname, channel}, (error) => {
-           if(error){
-               alert(error);
-           }
-       });
+        socket.emit("join", { nickname, channel}, (error) => {
+            if(error){
+                alert(error);
+            }
+        });
 
-    //    return () => {
-    //        socket.emit('disconnect');
-    //        socket.off();
-    //    }
+            return () => {
+                socket.emit('disconnect');
+                socket.off();
+            }
     }, [ENDPOINT, location.search])
 
 
@@ -46,12 +51,15 @@ const Chat = ({location}) => {
 
     useEffect(() => {
         socket.on("message", (message) => {
-            SetMessages(messages => [...messages, message]);
+            SetMessages(messages => [...messages, message]);        
         });
         socket.on("channelData", ({users}) => {
             setUsers(users);
         });
-        
+        socket.on("newNickname", (user) => {
+            setOldNicknames(user.oldNicknames);
+            setNickname(user.nickname);
+        });
     }, []);
 
     const sendMessage = (e) => {
@@ -59,29 +67,32 @@ const Chat = ({location}) => {
         if(message){
             socket.emit("sendMessage", message, () => SetMessage(""));
             // le callback nettoie après l'envoi du message
-            
         }
-
     }
-
-
-    
-
 
     // console.log(message, messages);
     console.log('render');
 
     return (
-        <div>
-            <div>
-                <InfoBar channel={channel}/>
-                <Messages messages={messages} nickname={nickname}/>
-                <Input message={message} SetMessage={SetMessage} sendMessage={sendMessage}/>
+        <div className="mainChatContainer">
+            <div className="chatLeftContainer">
+                <img src={profilIconBlanc} className="profilIcon"/>
+                <p className="chatLeftText">{nickname}</p>
+                <button>Accueil</button>
             </div>
-            <OnlineUsers users={users}/>
+            <div className="chatListContainer">
+                <ChatList/>
+            </div>
+            <div className="chatRightContainer">
+                <div className="chatWindow">
+                    <InfoBar channel={channel}/>
+                    <Messages messages={messages} nickname={nickname} oldNicknames={oldNicknames}/>
+                    <Input message={message} SetMessage={SetMessage} sendMessage={sendMessage}/>
+                </div>
+            </div>
         </div>
     );
 }
-
+   /*setOldNicknames(oldNicknames => [...oldNicknames, nickname]);*/
 
 export default Chat;

@@ -1,0 +1,25 @@
+.messageBar{
+    width: 70%;
+    height: 50px;
+}
+
+.sendMessageButton{
+    padding-left: 1px;
+    display: flex;
+    width: 10%;
+    margin-left: 6px;
+    align-items: center;
+    height: 50px;
+    justify-content: center;
+    font-family: Helvetica;
+
+}
+
+.formSendMessage{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 12px;
+    font-family: Helvetica;
+}

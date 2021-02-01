@@ -1,11 +1,11 @@
-.outerContainer {
+/*.outerContainer {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     background-color: #1A1A1D;
   }
-  
+
   .container {
     display: flex;
     flex-direction: column;
@@ -14,4 +14,66 @@
     border-radius: 8px;
     height: 60%;
     width: 35%;
-  }
+  }*/
+/*--------------MAIN----------------*/
+.mainChatContainer{
+    display: flex;
+    width: 100%;
+    height: 98vh;
+    flex-direction: row;
+    background-color: #f2f6fd;
+}
+/*------------LEFT-PART-------------*/
+
+.chatLeftContainer{
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+   /* background-color: #2f1c82;*/
+    background-image: linear-gradient(180deg, #b17fd2, #7d85c5);
+    height: 98vh;
+    align-items: center;
+    justify-content: flex-start;
+    border-radius: 12px;
+}
+
+.chatLeftText{
+    color: #f2f6fd;
+    font-size: 20px;
+    margin-top: 2px;
+    font-family: 'poppins', sans-serif;
+    font-weight: bold;
+}
+.profilIcon{
+    height: 60px;
+    margin-top: 6px;
+    margin-bottom: 0px;
+}
+/*------------RIGHT-PART------------*/
+
+.chatRightContainer{
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    background-color: #f2f6fd;
+    align-items: center;
+    justify-content: center;
+}
+
+.chatWindow{
+    border-radius: 8px;
+    background-color: #FFFFFF;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    height: 96vh;
+}
+/*------------MIDDLE-PART------------*/
+.chatListContainer{
+    display: flex;
+    padding-left: 40px;
+    flex-direction: column;
+    width: 30%;
+
+
+}

@@ -1,0 +1,37 @@
+.ChatListMainContainer{
+    background-color: #FFFFFF;
+    border-radius: 8px;
+    width: 90%;
+    height: 80px;
+    display: flex;
+    margin-bottom: 12px;
+    flex-direction: column;
+}
+
+.conversationTitle{
+    font-family: Helvetica;
+    font-size: 16px;
+    margin-bottom: 0px;
+    margin-left: 10px;
+    display: flex;
+}
+
+.mainChatTitle{
+    margin-left: 12px;
+    font-family: Helvetica;
+    font-size: 30px;
+}
+
+.chatListText{
+    font-family: Helvetica;
+    font-size: 14px;
+    margin-left: 10px;
+    display: flex;
+}
+
+.test{
+    height: 90vh;
+    overflow: auto;
+    flex: auto;
+    margin-top: 12px;
+}

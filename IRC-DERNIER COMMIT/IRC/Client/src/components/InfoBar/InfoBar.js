@@ -5,9 +5,10 @@ import './InfoBar.css';
 const InfoBar = ({channel}) => {
 
     return (
-        <div>
-            <h1>{channel}</h1>
+        <div className="infoBar">
+            <h1 className="channelTitle">{channel}</h1>
         </div>
+
     )
 }
 

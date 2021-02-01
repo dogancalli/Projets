@@ -1,0 +1,93 @@
+/*---------MAIN------------------*/
+.mainJoinContainer{
+    background-color: #f2f6fd;
+    display: flex;
+    flex-direction: row;
+}
+
+/*-----------LEFT-PART-----------*/
+.leftJoinOuterContainer{
+    display: flex;
+    flex-direction: column;
+    height: 80vh;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+}
+
+.IRCTitle {
+    text-align: center;
+/*    color: #2f1c82;*/
+    color: #5b17a9;
+    font-family: 'poppins', sans-serif;
+    font-size: 80px;
+}
+
+.chatIcon{
+    height: 100px;
+    margin-right: 60px;
+}
+
+.leftInnerContainer{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.IrcSubtitle{
+    color: #434343;
+    font-family: 'poppins', sans-serif;
+    width: 70%;
+    align-items: center;
+}
+
+/*-----------RIGHT-PART-----------*/
+
+.joinTitle {
+    font-family: 'poppins', sans-serif;
+    font-size: 30px;
+    text-align: center;
+    color: #434343;
+}
+.JoinouterContainer{
+    flex-direction: column;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    background-color: #f2f6fd;
+}
+
+.innerContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.intermediateRight{
+    background: white;
+    border-radius: 10px;
+    padding: 15px;
+    height: 400px;
+    align-content: center;
+}
+
+.joinInput{
+    align-items: center;
+    margin: 12px 12px 12px 12px;
+    height: 70px;
+}
+
+.JoinButton{
+    align-items: center;
+    margin: 12px 12px 12px 12px;
+    height: 70px;
+    width: 400px;
+    background-color: #5b17a9;
+    color: #f2f6fd;
+    border-radius: 5px;
+    border-color: #5b17a9;
+    font-weight: bold;
+}
+
+
