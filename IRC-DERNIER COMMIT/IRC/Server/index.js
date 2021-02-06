@@ -14,6 +14,15 @@ const router = require("./router");
 const {users, addUser, removeUser, getUser, getUsersInChannel, setNickname, setOldNicknames, getUserByNickname} = require("./users");
 const { allowedNodeEnvironmentFlags } = require('process')
 const _ = require('lodash');
+let bodyParser = require('body-parser')
+
+app.use(bodyParser.json());
+
+
+const Channel = require('../Api/controllers/channel.controller');
+require('../Api/routes/message.routes')(app);
+require('../Api/routes/user.routes')(app);
+require('../Api/routes/link.routes')(app);
 
 
 
@@ -23,8 +32,7 @@ app.use(cors());
 
 io.on("connection", (socket) => {
     console.log("We have a new connection !!!");
-
-    socket.on("join", ({nickname, channel}, callback) => {
+        socket.on("join", ({nickname, channel}, callback) => {
         console.log(nickname, channel);
 
         const {error, user} = addUser({id : socket.id, nickname, channel});
@@ -86,6 +94,34 @@ io.on("connection", (socket) => {
 
         }
 
+        else if(message.includes("/create")) {
+            newChannel = message.substr(8);
+            Channel.createChannel(newChannel);
+            // ici à faire function io.emit("/create" , newchannel);
+        }
+
+        else if(message.includes("/delete")) {
+            channelName = message.substr(8);
+            Channel.deleteChannel(channelName);
+        }
+
+        else if(message.includes("/list")) {
+                if(message.length<=6)
+            {
+                Channel.findAllChannels();
+            }
+                else
+            {
+                channelName = message.substr(6);
+                Channel.findOneChannel(channelName);
+            }
+        }
+
+        else if(message.includes("/join")) {
+            joinChannel = message.substr(6);
+            Channel.findChannelByName(joinChannel);
+            //ici à faire function io.emit("/join" , le channel qui a été get);
+        }
 
         else{
            /*  console.log(socket.id);*/
