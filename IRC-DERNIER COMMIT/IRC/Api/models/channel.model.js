@@ -20,22 +20,22 @@ const Channel = function(channel) {
   };
 
   Channel.findChannelByName = (Name, result) => {
-    connection.query(`SELECT * FROM channel WHERE Name = test1`, (err, res) => {
+    connection.query(`SELECT * FROM channel WHERE Name = ?`, Name, (err, res) => {
    //   if (err) {
    //     console.log("error: ", err);
    //     result(err, null);
    //     return;
    //   }
 
-    //  if (res.length) {
-    //    console.log("found channel: ", res);
-    //    result(null, res);
-    //     return;
-    //  }
+      //if (res.length) {
+        console.log("found channel: ", res);
+        result(null, res);
+        return;
+      //}
 
-console.log("result",result(res));
-    //  result({ kind: "not_found" }, null);
+      //  result({ kind: "not_found" }, null);
     });
+    console.log("result : :  : : :",result)
   };
 
   Channel.getAllChannels = result => {
