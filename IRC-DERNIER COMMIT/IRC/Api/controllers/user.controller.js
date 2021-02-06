@@ -1,21 +1,21 @@
 const User = require("../models/user.model.js");
 
 // Create and Save a new user
-exports.create = (req, res) => {
+exports.createUser = (req, res) => {
     // Validate request
     if (!req.body) {
         res.status(400).send({
           message: "Le contenu ne peut être vide !!!"
         });
       }
-    
+
       // Create a user
       const user = new User({
         UName: req.body.UName,
       });
-    
+
       // Save user in the database
-      User.create(user, (err, data) => {
+      User.createUser(user, (err, data) => {
         if (err)
           res.status(500).send({
             message:
@@ -26,8 +26,8 @@ exports.create = (req, res) => {
 };
 
 // Retrieve all user from the database.
-exports.findAll = (req, res) => {
-    User.getAll((err, data) => {
+exports.findAllUsers = (req, res) => {
+    User.getAllUsers((err, data) => {
         if (err)
           res.status(500).send({
             message:
@@ -38,8 +38,8 @@ exports.findAll = (req, res) => {
 };
 
 // Find a single user with it's id
-exports.findOne = (req, res) => {
-    User.findById(req.params.UID, (err, data) => {
+exports.findOneUser = (req, res) => {
+    User.findUserById(req.params.UID, (err, data) => {
         if (err) {
           if (err.kind === "not_found") {
             res.status(404).send({
@@ -54,16 +54,36 @@ exports.findOne = (req, res) => {
       });
 };
 
+
+// Find a single user with it's nickname
+exports.findOneUserByNickname = (nickname, req, res) => {
+    User.findUserByNickname(nickname, (err, data) => {
+        if (err) {
+            if (err.kind === "not_found") {
+                res.status(404).send({
+                    message: `le user n'a pas été retrouver via le surnom ${nickname}.`
+                });
+            } else {
+                res.status(500).send({
+                    message: "le user n'a pas été retrouver via le surnom " + nickname
+                });
+            }
+        } else res.send(data);
+    });
+};
+
+
+
 // Update a user identified by the user's id in the request
-exports.update = (req, res) => {
+exports.updateUser = (req, res) => {
     // Validate Request
     if (!req.body) {
         res.status(400).send({
           message: "le contenu ne peut être vide !!!"
         });
       }
-    
-      User.updateById(
+
+      User.updateUserById(
         req.params.UID,
         new User(req.body),
         (err, data) => {
@@ -83,8 +103,8 @@ exports.update = (req, res) => {
 };
 
 // Delete a user with the specified user's id in the request
-exports.delete = (req, res) => {
-    User.remove(req.params.UID, (err, data) => {
+exports.deleteUser = (req, res) => {
+    User.removeUser(req.params.UID, (err, data) => {
         if (err) {
           if (err.kind === "not_found") {
             res.status(404).send({

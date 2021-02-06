@@ -1,23 +1,23 @@
 const Message = require("../models/message.model.js");
 
 // Create and Save a new msg
-exports.create = (req, res) => {
+exports.createMessage = (req, res) => {
     // Validate request
     if (!req.body) {
         res.status(400).send({
           message: "Le contenu ne peut être vide !!!"
         });
       }
-    
+
       // Create a message
       const msg = new Message({
         Text: req.body.Text,
         UserID: req.body.UserID,
         ChanelID: req.body.ChanelID
       });
-    
+
       // Save message in the database
-      Message.create(msg, (err, data) => {
+      Message.createMessage(msg, (err, data) => {
         if (err)
           res.status(500).send({
             message:
@@ -28,8 +28,8 @@ exports.create = (req, res) => {
 };
 
 // Retrieve all msg from the database.
-exports.findAll = (req, res) => {
-    Message.getAll((err, data) => {
+exports.findAllMessages = (req, res) => {
+    Message.getAllMessages((err, data) => {
         if (err)
           res.status(500).send({
             message:
@@ -40,8 +40,8 @@ exports.findAll = (req, res) => {
 };
 
 // Find a single message with it's id
-exports.findOne = (req, res) => {
-    Message.findById(req.params.MID, (err, data) => {
+exports.findOneMessage = (req, res) => {
+    Message.findMessageById(req.params.MID, (err, data) => {
         if (err) {
           if (err.kind === "not_found") {
             res.status(404).send({
@@ -57,15 +57,15 @@ exports.findOne = (req, res) => {
 };
 
 // Update a message identified by the message's id in the request
-exports.update = (req, res) => {
+exports.updateMessage = (req, res) => {
     // Validate Request
     if (!req.body) {
         res.status(400).send({
           message: "le contenu ne peut être vide !!!"
         });
       }
-    
-      Message.updateById(
+
+      Message.updateMessageById(
         req.params.MID,
         new Message(req.body),
         (err, data) => {
@@ -85,8 +85,8 @@ exports.update = (req, res) => {
 };
 
 // Delete a message with the specified message's id in the request
-exports.delete = (req, res) => {
-    Message.remove(req.params.MID, (err, data) => {
+exports.deleteMessage = (req, res) => {
+    Message.removeMessage(req.params.MID, (err, data) => {
         if (err) {
           if (err.kind === "not_found") {
             res.status(404).send({
